@@ -1,33 +1,43 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    compileSdk = 32
-    buildToolsVersion = "32.0.0"
+    compileSdk = 33
+    buildToolsVersion = "33.0.0"
     defaultConfig {
         applicationId = "com.yuk.fuckMiLinkService"
         minSdk = 28
-        targetSdk = 32
-        versionCode = 10
-        versionName = "1.0"
+        targetSdk = 33
+        versionCode = 11
+        versionName = "1.1"
     }
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro", "proguard-log.pro"))
+            setProguardFiles(listOf("proguard-rules.pro", "proguard-log.pro"))
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.majorVersion
+    }
     packagingOptions {
         dex {
             useLegacyPackaging = true
+        }
+        applicationVariants.all {
+            outputs.all {
+                (this as BaseVariantOutputImpl).outputFileName =
+                    "MiLinkService-$versionName($versionCode)-$name.apk"
+            }
         }
     }
 }

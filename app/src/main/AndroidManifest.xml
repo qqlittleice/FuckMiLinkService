@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yuk.fuckMiLinkService">
 
     <application
-        android:icon="@mipmap/ic_launcher"
-        android:label="Miui 解锁小米妙享"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true">
+        android:label="FuckMiLinkService"
+        tools:ignore="MissingApplicationIcon">
         <meta-data
             android:name="xposedscope"
             android:resource="@array/xposed_scope" />
 
         <meta-data
             android:name="xposeddescription"
-            android:value="字面意思" />
+            android:value="解锁小米妙享相关" />
 
         <meta-data
             android:name="xposedminversion"
